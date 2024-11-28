@@ -109,8 +109,11 @@ export default function Login() {
           value={form.email}
           valid={errors.email.length === 0 && form.email.length > 0}
           invalid={errors.email.length > 0}
+          data-cy="email-input"
         />
-        {errors.email && <FormFeedback>{errors.email}</FormFeedback>}
+        {errors.email && (
+          <FormFeedback data-cy="wrong-email">{errors.email}</FormFeedback>
+        )}
       </FormGroup>
       <FormGroup>
         <Label for="examplePassword">Password</Label>
@@ -123,8 +126,13 @@ export default function Login() {
           value={form.password}
           valid={form.password.length >= 4}
           invalid={form.password.length > 0 && form.password.length < 4}
+          data-cy="password-input"
         />
-        {errors.password && <FormFeedback>{errors.password}</FormFeedback>}
+        {errors.password && (
+          <FormFeedback data-cy="wrong-password">
+            {errors.password}
+          </FormFeedback>
+        )}
       </FormGroup>
       <FormGroup check>
         <Input
@@ -135,13 +143,14 @@ export default function Login() {
           onChange={handleChange}
           valid={form.terms}
           invalid={!form.terms}
+          data-cy="terms-input"
         />{" "}
         <Label htmlFor="terms" check>
           I agree to terms of service and privacy policy
         </Label>
       </FormGroup>
       <FormGroup className="text-center p-4">
-        <Button disabled={!isValid} color="primary">
+        <Button disabled={!isValid} color="primary" data-cy="button-signin">
           Sign In
         </Button>
       </FormGroup>
