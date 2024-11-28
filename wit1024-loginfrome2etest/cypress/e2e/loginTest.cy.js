@@ -51,3 +51,9 @@ describe("Types true email and password but don't agree terms", () => {
     cy.get('[data-cy="button-signin"]').should("be.disabled");
   });
 });
+
+describe("All tests completed", () => {
+  it("you are passed all tests", () => {
+    cy.visit(" http://localhost:5173/alltestssucceed");
+  });
+});
